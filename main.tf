@@ -14,7 +14,6 @@ terraform {
     # Lembre de trocar o bucket para o seu, não pode ser o mesmo nome
     #bucket = "pmrm-tfstates-terraform" # bucker regiao eu-central
     bucket = "pmrm-us-bucket-terraform" # Bucket regiao us east
-    dynamobd_table = "terraform-state-lock-dynamo"
     key    = "terraform-test.tfstate"
     region = "us-east-1"
   }
