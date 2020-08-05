@@ -12,6 +12,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
+  count         = var.servers
   ami           = data.aws_ami.ubuntu.id #"ami-0d359437d1756caa8"
   instance_type = "t2.micro"
 
