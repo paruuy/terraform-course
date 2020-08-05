@@ -4,5 +4,5 @@ variable "hash_commit" {
 
 # Define the var withotut default value (if not declares will be error)
 variable "servers" {
-
+  default = 1
 }
