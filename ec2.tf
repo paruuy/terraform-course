@@ -12,27 +12,12 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  #count         = var.servers
+  count         = var.environment == "production" ? 2 + var.plus : 1 #Conditional with sum if environment = production
+  # count         = var.production ? 2 : 1 # We can create an environment production with default true and the condition stay this way
   ami           = data.aws_ami.ubuntu.id #"ami-0d359437d1756caa8"
   instance_type = "t2.micro"
 
   tags = {
     Name = "HelloWorld"
   }
-}
-
-resource "aws_instance" "web2" {
-  #count         = var.servers
-  ami           = data.aws_ami.ubuntu.id #"ami-0d359437d1756caa8"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "HelloWorld"
-  }
-  depends_on = [aws_instance.web] #web2 depends of web
-}
-
-resource "aws_eip" "ip" {
-  vpc      = true
-  instance = aws_instance.web.id
 }

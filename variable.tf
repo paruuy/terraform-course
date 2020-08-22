@@ -3,6 +3,14 @@ variable "hash_commit" {
 }
 
 # Define the var withotut default value (if not declares will be error)
-variable "servers" {
-  default = 1
+variable "environment" {
+  default = "production"
+}
+
+variable "plus" {
+  default = 2
+}
+
+variable "production" {
+  default = true
 }
