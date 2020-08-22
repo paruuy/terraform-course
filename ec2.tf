@@ -12,11 +12,27 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  count         = var.servers
+  #count         = var.servers
   ami           = data.aws_ami.ubuntu.id #"ami-0d359437d1756caa8"
   instance_type = "t2.micro"
 
   tags = {
     Name = "HelloWorld"
   }
+}
+
+resource "aws_instance" "web2" {
+  #count         = var.servers
+  ami           = data.aws_ami.ubuntu.id #"ami-0d359437d1756caa8"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
+  }
+  depends_on = [aws_instance.web] #web2 depends of web
+}
+
+resource "aws_eip" "ip" {
+    vpc = true
+    instance = aws_instance.web.id
 }
