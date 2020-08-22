@@ -33,6 +33,6 @@ resource "aws_instance" "web2" {
 }
 
 resource "aws_eip" "ip" {
-    vpc = true
-    instance = aws_instance.web.id
+  vpc      = true
+  instance = aws_instance.web.id
 }
