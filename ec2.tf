@@ -5,6 +5,7 @@ data "aws_ami" "ubuntu" {
   most_recent = true
   filter {
     name   = "name"
+    # Value in String Template expression
     values = ["IaaSWeek-${var.hash_commit}"]
   }
 
@@ -26,7 +27,9 @@ resource "aws_instance" "web" {
       volume_type = ebs_block_device.value["volume_type"]
     }
   }  
+ 
+ # Value in String Template expression
  tags = {
-    Name = "HelloWorld"
+    Name = "HelloWorld ${var.name}"
   }
 }

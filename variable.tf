@@ -32,3 +32,9 @@ variable "blocks" {
   }))
   description = "List of EBS Block"
 }
+
+variable "name" {
+  type = string
+  description = "Testing interpolation (String Template)"
+  default = "String Template Test"
+}
