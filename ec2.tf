@@ -30,6 +30,8 @@ resource "aws_instance" "web" {
  
  # Value in String Template expression
  tags = {
-    Name = "HelloWorld ${var.name}"
+    #Name = "HelloWorld ${var.name}"
+    # Using String Template with Directives. In this example the default is diffrent of gomex, then the value is unamed
+    Name = "Hello %{ if var.name == "gomex"}${var.name}%{ else } unamed%{ endif }"
   }
 }
