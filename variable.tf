@@ -23,15 +23,15 @@ variable "production" {
 }
 
 # Defined blocks var (the data is in terraform.tfvars)
-variable "blocks" {
+#variable "blocks" {
   # The list of object must be declare each type of data
-  type = list(object({ 
-    device_name = string
-    volume_size = string
-    volume_type = string
-  }))
-  description = "List of EBS Block"
-}
+#  type = list(object({ 
+#    device_name = string
+#    volume_size = string
+#    volume_type = string
+#  }))
+#  description = "List of EBS Block"
+#}
 
 variable "name" {
   type = string

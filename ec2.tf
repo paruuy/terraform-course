@@ -19,14 +19,14 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
 
   #Dynamic Block
-  dynamic "ebs_block_device" { # The name between quotes must be equal to the resource to be created
-    for_each = var.blocks # Data from terraform.tfvars
-    content {
-      device_name = ebs_block_device.value["device_name"]
-      volume_size = ebs_block_device.value["volume_size"]
-      volume_type = ebs_block_device.value["volume_type"]
-    }
-  }  
+#  dynamic "ebs_block_device" { # The name between quotes must be equal to the resource to be created
+#    for_each = var.blocks # Data from terraform.tfvars
+#    content {
+#      device_name = ebs_block_device.value["device_name"]
+#      volume_size = ebs_block_device.value["volume_size"]
+#      volume_type = ebs_block_device.value["volume_type"]
+#    }
+#  }  
  
  # Value in String Template expression
  tags = {
