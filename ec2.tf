@@ -17,7 +17,16 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id #"ami-0d359437d1756caa8"
   instance_type = "t2.micro"
 
-  tags = {
+  #Dynamic Block
+  dynamic "ebs_block_device" { # The name between quotes must be equal to the resource to be created
+    for_each = var.blocks # Data from terraform.tfvars
+    content {
+      device_name = ebs_block_device.value["device_name"]
+      volume_size = ebs_block_device.value["volume_size"]
+      volume_type = ebs_block_device.value["volume_type"]
+    }
+  }  
+ tags = {
     Name = "HelloWorld"
   }
 }

@@ -21,3 +21,14 @@ variable "production" {
   type = bool
   default = true
 }
+
+# Defined blocks var (the data is in terraform.tfvars)
+variable "blocks" {
+  # The list of object must be declare each type of data
+  type = list(object({ 
+    device_name = string
+    volume_size = string
+    volume_type = string
+  }))
+  description = "List of EBS Block"
+}
